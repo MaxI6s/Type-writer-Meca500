@@ -24,12 +24,11 @@ def extract_characters(file_path):
 # --- Example Usage ---
 def examople_usage():
     # 1. Create a dummy file for testing
-    with open('text/test_file.txt', 'w', encoding='utf-8') as f:
+    with open('texts/test_file.txt', 'w', encoding='utf-8') as f:
         f.write("Hello World!\nPython is great.")
 
     # 2. Call the function
-    characters = extract_characters('text/test_file.txt')
-
+    characters = extract_characters('texts/test_file.txt')
     # 3. Print the result
     print(f"Total characters extracted: {len(characters)}")
     print(f"First 15 characters: {characters[:15]}")

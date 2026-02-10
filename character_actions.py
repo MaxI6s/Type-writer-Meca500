@@ -1,21 +1,22 @@
-def on_space():
-    print(">> Found a SPACE: Processing space character...")
-    pass
+from robot_actions import RobotController
+from character_positions import Layout
 
-def on_newline():
-    print(">> Found a NEWLINE: Starting a new line...")
-    pass
+def on_space(robot: RobotController, Layout: Layout):
+    robot.press_space()
 
-def on_shift_char(char):
-    print(f">> Found a SHIFT CHAR: Doing special processing with {char}...")
-    pass
+def on_newline(robot: RobotController):
+    robot.new_line()
+    robot.carriage_return()
 
-def on_default_char(char):
-    # What to do with everything else
-    print(f">> Standard processing for: '{char}'")
-    pass
+def on_shift_char(robot: RobotController, char: str):
+    robot.shift_lock()
+    robot.press_key([0, 0, 0])
+    robot.shift_unlock()
 
-def character_actions(char: str, shift_chars:set):
+def on_default_char(robot: RobotController, char: str):
+    robot.press_key([0, 0, 0])
+
+def character_actions(robot: RobotController, char: str, shift_chars:set):
     """
     Dispatches actions based on the character type.
     """

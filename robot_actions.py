@@ -19,8 +19,8 @@ class RobotController:
     def shift_unlock(self):
         print(">> Shift lock disengaged: Robot is now operational.")
     
-    def press_key(self, char):
-        print(f">> pressing '{char}' key...")
+    def press_key(self, id:int):
+        print(f">> pressing key with id {id}...")
         
     def press_space(self):
         print(">> pressing SPACE key...")
