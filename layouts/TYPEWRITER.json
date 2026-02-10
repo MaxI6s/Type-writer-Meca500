@@ -1,6 +1,10 @@
 {
-  "layout_name": "US_ANSI_QWERTY_Standard",
-  "unit_size_mm": 19.05,
+  "layout_name": "TYPEWRITER_QWERTY_Standard",
+  "unit_size_mm": {
+    "x": 19.05,
+    "y": 19.05,
+    "z": 0
+  },
   "keys": [
     { "label": "`", "shift_label": "~", "x": 0, "y": 0, "z": 0 },
     { "label": "1", "shift_label": "!", "x": 1, "y": 0, "z": 0 },
@@ -52,5 +56,9 @@
     { "label": ",", "shift_label": "<", "x": 9.25, "y": -3, "z": 0 },
     { "label": ".", "shift_label": ">", "x": 10.25, "y": -3, "z": 0 },
     { "label": "/", "shift_label": "?", "x": 11.25, "y": -3, "z": 0 }
-  ]
+  ],
+  "space_key": { "x": 4, "y": -4, "z": 0 },
+  "enter_key": { "x": 12, "y": -2, "z": 0 },
+  "shift_lock_key": { "x": 0, "y": -3, "z": 0 },
+  "shift_unlock_key": { "x": 0, "y": -3, "z": 0 }
 }
