@@ -1,47 +1,46 @@
 from robot_actions import RobotController
-from character_positions import Layout
+from layout import Layout
 
-def on_space(robot: RobotController, Layout: Layout):
+def on_space(robot: RobotController):
     robot.press_space()
 
 def on_newline(robot: RobotController):
     robot.new_line()
-    robot.carriage_return()
 
-def on_shift_char(robot: RobotController, char: str):
-    robot.shift_lock()
-    robot.press_key([0, 0, 0])
-    robot.shift_unlock()
+def on_char(robot: RobotController, row:int, column:int, is_shifted:bool):
+    if is_shifted:
+        robot.shift_lock()
+    robot.press_key(row, column)
+    if is_shifted:
+        robot.shift_unlock()
 
-def on_default_char(robot: RobotController, char: str):
-    robot.press_key([0, 0, 0])
-
-def character_actions(robot: RobotController, char: str, shift_chars:set):
+def character_actions(robot: RobotController, layout: Layout, char: str):
     """
     Dispatches actions based on the character type.
     """
 
     match char:
         case ' ':
-            on_space()
+            on_space(robot)
         case '\n':
-            on_newline()
-        case _ if char in shift_chars:
-            # This catches any number (0-9)
-            on_shift_char(char)
+            on_newline(robot)
         case _:
-            # The '_' is a wildcard (anything not listed above)
-            on_default_char(char)
+            try:
+                row, column, is_shifted = layout.get_key(char)
+                print(f"Character '{char}' found at row {row}, column {column}, shifted: {is_shifted}")
+                on_char(robot, row, column, is_shifted)
+            except ValueError as e:
+                print(f"Warning: {e}")
 
 # --- Example Usage (using your previous file) ---
 
 def example_usage():
-    shift_characters = set('!@#$%^&*()_+<>?:"{}|')  # Define which characters are considered "shift chars"
-    
-    test_string = "Hello World!\nThis is a test string with numbers: 12345."
-    
+    robot = RobotController("192.168.0.100", mockup=True)
+    layout = Layout('layouts/TYPEWRITER.json')
+
+    test_string = "Hello World!\nThis is a test."
     for char in test_string:
-        character_actions(char, shift_characters)
+        character_actions(robot, layout, char)
         
 if __name__ == "__main__":
     example_usage()

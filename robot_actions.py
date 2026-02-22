@@ -3,10 +3,10 @@ import time
 
 class RobotController:
     def __init__(self, ip_address, mockup:bool=False):
-        self.robot:mdr.Robot = mdr.Robot(ip_address)
         self.mockup = mockup
 
         if not mockup:
+            self.robot = mdr.Robot(ip_address)
             self.robot.Connect()
             print(">> Robot connected successfully.")
         else:
@@ -23,7 +23,7 @@ class RobotController:
         print(">> Robot is now in a safe position.")
 
     def shift_lock(self):
-        print(">> Shift lock engaged: Robot is now in a safe state.")
+        print(">> Shift lock engaged: Robot is now in a shifted state.")
         if not self.mockup:
             # Example: Engage shift lock (this is just a placeholder)
             raise NotImplementedError
@@ -33,14 +33,14 @@ class RobotController:
         print(">> Robot is now in shift lock mode.")
 
     def shift_unlock(self):
-        print(">> Shift lock disengaged: Robot is now operational.")
+        print(">> Shift lock disengaged: Robot is now in normal state.")
         if not self.mockup:
             # Example: Disengage shift lock (this is just a placeholder)
             raise NotImplementedError
         else:
             print(">> Mockup mode: Skipping actual shift lock disengagement.")
             time.sleep(0.5)  # Simulate time taken to disengage shift lock
-        print(">> Robot is now operational.")
+        print(">> Robot is now in normal state.")
 
     def press_key(self, row:int, column:int):
         print(f">> pressing key at row {row}, column {column}...")
@@ -62,16 +62,6 @@ class RobotController:
             time.sleep(0.5)  # Simulate time taken to press the space key
         print(">> SPACE key has been pressed.")
     
-    def carriage_return(self):
-        print(">> performing carriage return...")
-        if not self.mockup:
-            # Example: Move to the enter key position and press it (this is just a placeholder)
-            raise NotImplementedError
-        else:
-            print(">> Mockup mode: Skipping actual carriage return.")
-            time.sleep(0.5)  # Simulate time taken to perform carriage return
-        print(">> Carriage return has been performed.") 
-        
     def new_line(self):
         print(">> performing new line...")
         if not self.mockup:

@@ -10,7 +10,7 @@
     { "label": "8", "shift_label": "'", "x": 6, "y": 0},
     { "label": "9", "shift_label": "(", "x": 7, "y": 0},
     { "label": "0", "shift_label": ")", "x": 8, "y": 0},
-    { "label": "-", "x": 9, "y": 0},
+    { "label": "-", "shift_label": "" , "x": 9, "y": 0},
 
     { "label": "q", "shift_label": "Q", "x": 0, "y": 1},
     { "label": "w", "shift_label": "W", "x": 1, "y": 1},
