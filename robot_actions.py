@@ -68,9 +68,6 @@ class RobotController:
                 self.robot.SetVariable("y_offset", y_offset)
                 self.robot.StartProgram("fourth_line")
                 self.robot.WaitIdle()
-            # Example: Move to the key position and press it (this is just a placeholder)
-            self.robot.StartProgram("TEST_move_to_key")
-            self.robot.WaitIdle()
         else:
             print(">> Mockup mode: Skipping actual key press.")
             time.sleep(0.5)  # Simulate time taken to press the key
