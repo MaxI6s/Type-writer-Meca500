@@ -29,8 +29,8 @@ class RobotController:
     def shift_lock(self):
         print(">> Shift lock engaged: Robot is now in a shifted state.")
         if not self.mockup:
-            # Example: Engage shift lock (this is just a placeholder)
-            raise NotImplementedError
+            self.robot.StartProgram("shift_lock")
+            self.robot.WaitIdle()
         else:
             print(">> Mockup mode: Skipping actual shift lock engagement.")
             time.sleep(0.5)  # Simulate time taken to engage shift lock
@@ -39,8 +39,8 @@ class RobotController:
     def shift_unlock(self):
         print(">> Shift lock disengaged: Robot is now in normal state.")
         if not self.mockup:
-            # Example: Disengage shift lock (this is just a placeholder)
-            raise NotImplementedError
+            self.robot.StartProgram("shift_unlock")
+            self.robot.WaitIdle()
         else:
             print(">> Mockup mode: Skipping actual shift lock disengagement.")
             time.sleep(0.5)  # Simulate time taken to disengage shift lock
