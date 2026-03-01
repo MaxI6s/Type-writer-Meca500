@@ -8,8 +8,8 @@ class RobotController:
         self.mockup = mockup
 
         if not mockup:
-            self.robot = mdr.Robot(ip_address)
-            self.robot.Connect()
+            self.robot = mdr.Robot()
+            self.robot.Connect(ip_address)
             print(">> Robot connected successfully.")
             self.robot.ResetError()
             self.robot.ActivateAndHome()

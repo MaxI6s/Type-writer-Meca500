@@ -5,7 +5,7 @@ from parser import *
 from character_actions import *
 
 PATH_TO_TEXT = "texts/poem_example.txt"
-MOCKUP_MODE = True
+MOCKUP_MODE = False
 
 def main():
     layout = Layout('layouts/TYPEWRITER.json')
