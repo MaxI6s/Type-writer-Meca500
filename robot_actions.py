@@ -1,6 +1,8 @@
 import mecademicpy.robot as mdr
 import time
 
+KEY_LINE_DIST = 19.722222
+
 class RobotController:
     def __init__(self, ip_address, mockup:bool=False):
         self.mockup = mockup
@@ -49,6 +51,23 @@ class RobotController:
     def press_key(self, row:int, column:int):
         print(f">> pressing key at row {row}, column {column}...")
         if not self.mockup:
+            y_offset = - row * KEY_LINE_DIST
+            if column ==0 :
+                self.robot.SetVariable("y_offset", y_offset)
+                self.robot.StartProgram("first_line")
+                self.robot.WaitIdle()
+            elif column == 1:
+                self.robot.SetVariable("y_offset", y_offset)
+                self.robot.StartProgram("second_line")
+                self.robot.WaitIdle()
+            elif column == 2:
+                self.robot.SetVariable("y_offset", y_offset)
+                self.robot.StartProgram("third_line")
+                self.robot.WaitIdle()
+            elif column == 3:
+                self.robot.SetVariable("y_offset", y_offset)
+                self.robot.StartProgram("fourth_line")
+                self.robot.WaitIdle()
             # Example: Move to the key position and press it (this is just a placeholder)
             self.robot.StartProgram("TEST_move_to_key")
             self.robot.WaitIdle()
